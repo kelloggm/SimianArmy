@@ -732,6 +732,7 @@ public class AWSClient implements CloudClient {
         if (imageIds != null) {
             request.setImageIds(Arrays.asList(imageIds));
         }
+        // TRUE POSITIVE: if imageIds is null or empty (there is at least one such call in aws/janitor/crawler/EBSSnapshotJanitorCrawler.java).
         DescribeImagesResult result = ec2Client.describeImages(request);
         List<Image> images = result.getImages();
 
